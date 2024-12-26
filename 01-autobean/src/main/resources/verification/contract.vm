@@ -1,0 +1,46 @@
+<style>
+    table { border-left:1px solid #dedede; border-top:1px solid #dedede;}
+    table td, table th { border-right:1px solid #dedede; border-bottom:1px solid #dedede;padding-bottom: 3px;padding-top: 3px;white-space:nowrap;}
+    table th { background-color: #AE0000; color: #FCFCFC; font-weight: normal; }
+</style>
+
+<table width="100%">
+    <tr width="100%">
+        <th width="100%" colspan="4" align="center">京东金条合同签署信息</th>
+    </tr>
+    <tr width="100%">
+        <td colspan="4" align="right">金条激活日期：$!date.format($!model.activeTime) &nbsp;&nbsp;</td>
+    </tr>
+    <tr width="100%">
+        <td width="17%">姓名</td>
+        <td width="33%">$!model.realName</td>
+        <td width="17%">身份证号</td>
+        <td width="33%">$!model.idNo</td>
+    </tr>
+    <tr width="100%">
+        <td>征信授权时间</td>
+        <td>$!date.format($!model.activeTime)</td>
+        <td>合同签署时间</td>
+        <td>$!date.format($!model.activeTime)</td>
+    </tr>
+    <tr width="100%">
+        <td>签署渠道</td>
+        <td colspan="3">京东金融<span style="color: #FFFFFF">SIGN_FOR_CFE_12_008</span></td>
+    </tr>
+    <tr width="100%">
+        <td>合同名称及版本号</td>
+        <td colspan="3">隐私权保护声明</td>
+    </tr>
+    <tr width="100%">
+        <td>合同名称及版本号</td>
+        <td colspan="3">个人征信授权书</td>
+    </tr>
+    <tr width="100%">
+        <td>出资方贷款单号</td>
+        <td colspan="3">$!model.investorLoanId</td>
+    </tr>
+    <tr width="100%">
+        <td>平台订单号</td>
+        <td colspan="3">$!model.orderId</td>
+    </tr>
+</table>

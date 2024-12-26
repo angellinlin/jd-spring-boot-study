@@ -13,7 +13,8 @@ public class ConfigBean {
     private String type = "Configuration注解生成bean实体";
 
     public ConfigBean() {
-        log.info("Configuration注解生成bean实体 加载时间: {}", System.currentTimeMillis());
+
+//        log.info("Configuration注解生成bean实体 加载时间: {}", System.currentTimeMillis());
     }
 
     public String getName(String name) {

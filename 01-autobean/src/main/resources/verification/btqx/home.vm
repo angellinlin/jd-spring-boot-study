@@ -1,0 +1,44 @@
+<style>
+    table { border-left:1px solid #dedede; border-top:1px solid #dedede;}
+    table td, table th { border-right:1px solid #dedede; border-bottom:1px solid #dedede; padding-bottom: 3px;padding-top: 3px;white-space:nowrap;}
+    table th { background-color: #AE0000; color: #FCFCFC; font-weight: normal; }
+</style>
+
+<table width="100%">
+    <tr width="100%">
+        <th width="30%">数据项</th>
+        <th width="70%">核查信息</th>
+    </tr>
+    <tr width="100%">
+        <td>公民身份证号码</td>
+        <td>$!model.idNo</td>
+    </tr>
+    <tr width="100%">
+        <td>姓名</td>
+        <td>$!model.realName</td>
+    </tr>
+    <tr width="100%">
+        <td>曾用名</td>
+        <td>-<span style="color: #FFFFFF">SIGN_FOR_CFE_12_008</span></td>
+    </tr>
+    <tr width="100%">
+        <td>性别</td>
+        <td>$!model.gender</td>
+    </tr>
+    <tr width="100%">
+        <td>户籍所在地</td>
+        <td>$!model.address</td>
+    </tr>
+    <tr width="100%">
+        <td>相片</td>
+        <td>
+            #if($!model.frontPhotoPath) <img src="file:///$!model.frontPhotoPath" style="margin: 0px;padding: 0px"/> #end
+        </td>
+    </tr>
+    <tr width="100%">
+        <td></td>
+        <td>
+            #if($!model.backPhotoPath) <img src="file:///$!model.backPhotoPath" style="margin: 0px;padding: 0px"/> #end
+        </td>
+    </tr>
+</table>

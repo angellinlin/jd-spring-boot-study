@@ -1,0 +1,91 @@
+<style>
+    table { border-left:1px solid #dedede; border-top:1px solid #dedede;}
+    table td, table th { border-right:1px solid #dedede; border-bottom:1px solid #dedede; padding-bottom: 3px;padding-top: 3px;white-space:nowrap;}
+    table th { background-color: #AE0000; color: #FCFCFC; font-weight: normal; }
+</style>
+
+<table width="100%">
+    <tr width="100%">
+        <th width="100%" colspan="4" align="center">京东金融-$!model.investorName 白条 $!date.format($!model.bizDate) 批次核销材料</th>
+    </tr>
+    <tr width="100%">
+        <td width="17%">时间</td>
+        <td width="33%">$!date.format($!model.bizDate)</td>
+        <td width="17%">核销批次</td>
+        <td width="33%">$!date.format($!model.batch)</td>
+    </tr>
+    <tr width="100%">
+        <td>姓名</td>
+        <td>$!model.realName</td>
+        <td>身份证号</td>
+        <td>$!model.idNo</td>
+    </tr>
+    <tr width="100%">
+        <td>笔数</td>
+        <td>1</td>
+        <td>出资比例</td>
+        <td>
+            #foreach($item in $!model.investmentRatio)
+                #if($velocityCount != 1)<br/>#end
+                $item.investorName $!number.format('#0.#', $item.ratio)%
+            #end
+        </td>
+    </tr>
+    <tr width="100%">
+        <td>本金余额</td>
+        <td>$!number.format($!model.unpaidPrincipal)</td>
+        <td>余额</td>
+        <td>$!number.format($!model.unpaidAmount)</td>
+    </tr>
+    <tr width="100%">
+        <td>核销类型</td>
+        <td colspan="3">追索类<span style="color: #FFFFFF">SIGN_FOR_CFE_12_008</span></td>
+    </tr>
+    <tr width="100%">
+        <td valign="center">
+            材料
+        </td>
+        <td>
+            <table width="100%" style="border-left:0px solid #dedede; border-top:0px solid #dedede;">
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; ">存证材料</td>
+                </tr>
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; ">公安户籍</td>
+                </tr>
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; ">交易流水</td>
+                </tr>
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; ">转账凭证</td>
+                </tr>
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; border-bottom:0px solid #dedede;">催收记录</td>
+                </tr>
+            </table>
+        </td>
+        <td colspan="2">
+            <table width="100%" style="border-left:0px solid #dedede; border-top:0px solid #dedede;">
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; ">√</td>
+                </tr>
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; ">√</td>
+                </tr>
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; ">√</td>
+                </tr>
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; ">√</td>
+                </tr>
+                <tr width="100%">
+                    <td style="border-right:0px solid #dedede; border-bottom:0px solid #dedede;">√</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr width="100%">
+        <td>制作人</td>
+        <td colspan="3">丁冬</td>
+    </tr>
+</table>

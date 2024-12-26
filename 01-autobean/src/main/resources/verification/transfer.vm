@@ -1,0 +1,52 @@
+<style>
+    table { border-left:1px solid #dedede; border-top:1px solid #dedede;}
+    table td, table th { border-right:1px solid #dedede; border-bottom:1px solid #dedede; padding-bottom: 3px;padding-top: 3px;white-space:nowrap;}
+    table th { background-color: #AE0000; color: #FCFCFC; font-weight: normal; }
+</style>
+
+<table width="100%">
+    <tr width="100%" style="background-color: darkorange; border-top: 0px">
+        <th width="100%" colspan="6" align="center">转账凭证</th>
+    </tr>
+    <tr width="100%">
+        <td width="21%">批次日期：</td>
+        <td width="10%">$!date.format($!model.bizDate)</td>
+        <td width="25%">身份证号：</td>
+        <td width="13%">$!model.idNo</td>
+        <td width="21%">姓名：</td>
+        <td width="10%">$!model.realName</td>
+    </tr>
+</table>
+<br/>
+<div style="color: #FFFFFF;text-align: center; width: 100%;">SIGN_FOR_CFE_12_008</div>
+<br/>
+<table width="100%" style="border-top: 0px">
+    <tr width="100%">
+        <th width="12%">业务日期</th>
+        <th width="8%">业务类型</th>
+        <th width="8%">交易类型</th>
+        <th width="14%">支付单号</th>
+        <th width="14%">付款账号</th>
+        <th width="8%">付款人</th>
+        <th width="8%">付款行</th>
+        <th width="8%">收款人</th>
+        <th width="8%">收款行</th>
+        <th width="6%">币种</th>
+        <th width="6%">状态</th>
+    </tr>
+    #foreach($item in $!model.items)
+        <tr width="100%">
+            <td>$!date.format("yyyy/MM/dd HH:mm", $!item.tradeTime)</td>
+            <td>金条</td>
+            <td>$!item.businessType.desc</td>
+            <td>$!item.platPaymentId</td>
+            <td>$!item.paymentCardNo</td>
+            <td>$!item.paymentUser</td>
+            <td>$!item.paymentBankName</td>
+            <td>$!item.receiveUser</td>
+            <td>$!item.receiveBankName</td>
+            <td>人民币</td>
+            <td>成功</td>
+        </tr>
+    #end
+</table>

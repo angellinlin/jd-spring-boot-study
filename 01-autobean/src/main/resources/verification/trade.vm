@@ -1,0 +1,57 @@
+<style>
+    table { border-left:1px solid #dedede; border-top:1px solid #dedede;}
+    table td, table th { border-right:1px solid #dedede; border-bottom:1px solid #dedede; padding-bottom: 3px;padding-top: 3px;white-space:nowrap;}
+    table th { background-color: #AE0000; color: #FCFCFC; font-weight: normal; }
+</style>
+
+<table width="100%" style="border-bottom:1px solid #dedede;">
+    <tr width="100%">
+        <th colspan="6" align="center">交易流水</th>
+    </tr>
+    <tr width="100%">
+        <td width="13%">截止日期</td>
+        <td width="13%">$!date.format($!model.dueDate)</td>
+        <td width="13%">姓名</td>
+        <td width="13%">$!model.realName</td>
+        <td width="13%">身份证号</td>
+        <td width="35%">$!model.idNo</td>
+    </tr>
+    <tr width="100%">
+        <td width="13%" style="border-bottom: 0px;">金条额度</td>
+        <td width="13%" style="border-bottom: 0px;">$!number.format($!model.quotaAmount)</td>
+        <td width="13%" style="border-bottom: 0px;">可用额度</td>
+        <td width="13%" style="border-bottom: 0px;">$!number.format($!model.availableAmount)</td>
+        <td width="13%" style="border-bottom: 0px;">出资比例</td>
+        <td width="35%" style="border-bottom: 0px;">
+            #foreach($item in $!model.investmentRatio)
+                #if($velocityCount != 1)<br/>#end
+                $item.investorName $!number.format('#0.#', $item.ratio)%
+            #end
+        </td>
+    </tr>
+</table>
+<br/>
+<div style="color: #FFFFFF;text-align: center; width: 100%;">SIGN_FOR_CFE_12_008</div>
+<br/>
+<table width="100%">
+    <tr width="100%">
+        <th width="15%">交易日期</th>
+        <th width="10%">业务类型</th>
+        <th width="10%">交易类型</th>
+        <th width="15%">关联银行卡</th>
+        <th width="20%">银行卡号</th>
+        <th width="15%">未偿还本金金额</th>
+        <th width="15%">金额（人民币）</th>
+    </tr>
+    #foreach($item in $!model.items)
+        <tr width="100%">
+            <td>$!date.format("yyyy/MM/dd HH:mm", $!item.tradeTime)</td>
+            <td>金条</td>
+            <td>$!item.businessType.desc</td>
+            <td>$!item.bankName $!item.cardType</td>
+            <td>$!item.cardNo</td>
+            <td>$!number.format($!item.unpaidAmount)</td>
+            <td>$!number.format($!item.tradeAmount)</td>
+        </tr>
+    #end
+</table>

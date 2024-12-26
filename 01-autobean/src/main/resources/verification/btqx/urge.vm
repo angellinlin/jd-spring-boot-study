@@ -1,0 +1,35 @@
+<style>
+    table { border-left:1px solid #dedede; border-top:1px solid #dedede;}
+    table td, table th { border-right:1px solid #dedede; border-bottom:1px solid #dedede; padding-bottom: 3px;padding-top: 3px;white-space:nowrap;}
+    table th { background-color: #AE0000; color: #FCFCFC; font-weight: normal; }
+</style>
+
+<table width="100%" style="border-bottom:1px solid #dedede;">
+    <tr width="100%">
+        <th width="100%" colspan="4" align="center">催收记录</th>
+    </tr>
+    <tr width="100%">
+        <td width="25%" style="border-bottom: 0px;">姓名：$!model.realName</td>
+        <td width="75%" colspan="3" style="border-bottom: 0px;">身份证号：$!model.idNo</td>
+    </tr>
+</table>
+<br/>
+<div style="color: #FFFFFF;text-align: center; width: 100%;">SIGN_FOR_CFE_12_008</div>
+<table width="100%">
+    <tr width="100%" style="">
+        <th width="20%">催收日期</th>
+        <th width="20%">催收时间</th>
+        <th width="20%">催收人员</th>
+        <th width="20%">催收方式</th>
+    </tr>
+    #foreach($item in $!model.items)
+        <tr width="100%">
+            <td>$!date.format("yyyy/MM/dd", $!item.urgeDate)</td>
+            <td>$!date.format("HH:mm:ss", $!item.urgeDate)</td>
+            <td>$!item.urgeUserName</td>
+            <td>
+               $!item.urgeType
+            </td>
+        </tr>
+    #end
+</table>

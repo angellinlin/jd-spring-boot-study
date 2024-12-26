@@ -14,7 +14,7 @@ public class ComponentBean {
     private String type = "@Component实例化bean";
 
     public ComponentBean() {
-        log.info("@Component生成bean实体 加载时间: {}", System.currentTimeMillis());
+//        log.info("@Component生成bean实体 加载时间: {}", System.currentTimeMillis());
     }
 
     public String getName(String name) {

@@ -13,7 +13,7 @@ public class FacBean {
     private String type = "FacBean通过工厂模式生产bean";
 
     public FacBean() {
-        log.info("工厂模式生产bean 加载时间: {}", System.currentTimeMillis());
+//        log.info("工厂模式生产bean 加载时间: {}", System.currentTimeMillis());
     }
 
     public String getName(String name) {

@@ -1,0 +1,101 @@
+<style>
+    table { border-left:1px solid #dedede; border-top:1px solid #dedede;}
+    table td, table th { border-right:1px solid #dedede; border-bottom:1px solid #dedede; padding-bottom: 3px;padding-top: 3px;white-space:nowrap;}
+    table th { background-color: #AE0000; color: #FCFCFC; font-weight: normal; }
+</style>
+
+<table width="100%">
+    <tr width="100%">
+        <th width="100%" colspan="4" align="center">京东金融借据确认信息</th>
+    </tr>
+    <tr width="100%">
+        <td colspan="4" align="right">借据起始日期：$!date.format($!model.issueTime) &nbsp;&nbsp;</td>
+    </tr>
+    <tr width="100%">
+        <td width="17%">姓名</td>
+        <td width="33%">$!model.realName</td>
+        <td width="17%">借款金额</td>
+        <td width="33%">$!number.format($!model.loanAmount)</td>
+    </tr>
+    <tr width="100%">
+        <td>收款账户</td>
+        <td>$!model.receiveAccount</td>
+        <td>借款人身份证号</td>
+        <td>$!model.idNo</td>
+    </tr>
+    <tr width="100%">
+        <td>借款人联系方式</td>
+        <td>$!model.mobile</td>
+        <td>放款时间</td>
+        <td>$!date.format($!model.issueTime)</td>
+    </tr>
+    <tr width="100%">
+        <td>基准利率</td>
+        <td>
+            $!number.format('#0.00####', $!model.interestRate) /日
+        </td>
+        <td>执行利率</td>
+        <td>
+            #if($!model.bizType && $!model.basePlanRate)
+            $!number.format('#0.00####', $!model.basePlanRate) /
+            #if($!model.bizType == "1" || $!model.bizType == "21" || $!model.bizType == "41" || $!model.bizType == "51") 日 #end
+            #if($!model.bizType == "2" || $!model.bizType == "22") 月 #end
+            #if($!model.bizType == "4" || $!model.bizType == "24") 周 #end
+            #end
+        </td>
+    </tr>
+    <tr width="100%">
+        <td>违约金利率</td>
+        <td>$!number.format('#0.00####', $!model.overdueRate) / 日</td>
+        <td>每月还款日</td>
+        <td>$!model.repaymentDay</td>
+    </tr>
+    <tr width="100%">
+        <td>借款用途</td>
+        <td>个人消费贷</td>
+        <td>还款账户</td>
+        <td>$!model.lastRepaymentAccount</td>
+    </tr>
+    <tr width="100%">
+        <td>首次还款日</td>
+        <td>$!date.format($!model.repaymentTimeFirst)</td>
+        <td>借据号</td>
+        <td>$!model.investorLoanId</td>
+    </tr>
+    <tr width="100%">
+        <td>贷款发放人</td>
+        <td>
+            #foreach($item in $!model.investmentRatio)
+                #if($velocityCount != 1)<br/>#end
+                $item.investorName
+            #end
+        </td>
+        <td>出资比例</td>
+        <td>
+            #foreach($item in $!model.investmentRatio)
+                #if($velocityCount != 1)<br/>#end
+                $item.investorName $!number.format('#0.#', $item.ratio)%
+            #end
+        </td>
+    </tr>
+    <tr width="100%">
+        <td>额度</td>
+        <td>$!number.format($!model.quotaAmount)</td>
+        <td>优惠</td>
+        <td>无</td>
+    </tr>
+    <tr>
+        <td>借款期限</td>
+        <td>$!model.plan 个月</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr width="100%">
+        <td>签约渠道</td>
+        <td colspan="3">京东金融<span style="color: #FFFFFF">SIGN_FOR_CFE_12_008</span></td>
+    </tr>
+    <tr width="100%">
+        <td>合同名称及版本号</td>
+        <td colspan="3">借款合同</td>
+    </tr>
+</table>

@@ -1,0 +1,40 @@
+<style>
+    table { border-left:1px solid #dedede; border-top:1px solid #dedede;}
+    table td, table th { border-right:1px solid #dedede; border-bottom:1px solid #dedede; padding-bottom: 3px;padding-top: 3px;white-space:nowrap;}
+    table th { background-color: #AE0000; color: #FCFCFC; font-weight: normal; }
+</style>
+
+<table width="100%">
+    <tr width="100%">
+        <th width="100%" colspan="4" align="center">京东白条放款处理结果</th>
+    </tr>
+    <tr width="100%">
+        <td colspan="4" align="right">
+            <span style="color: #FFFFFF">SIGN_FOR_CFE_12_008</span>
+            代付成功时间：$!date.format("yyyy/MM/dd HH:mm", $!model.returnTime) &nbsp;&nbsp;
+        </td>
+    </tr>
+    <tr width="100%">
+        <td width="17%">京东pin</td>
+        <td width="33%">$!model.jdPin</td>
+        <td width="17%">放款结果</td>
+        <td width="33%">成功</td>
+    </tr>
+    <tr width="100%">
+        <td>回执时间</td>
+        <td>无</td>
+        <td>签署渠道</td>
+        <td>京东金融</td>
+    </tr>
+    <tr width="100%">
+        <td>放款账号</td>
+        <td>无</td>
+        <td>出资比例</td>
+        <td>
+            #foreach($item in $!model.investmentRatio)
+                #if($velocityCount != 1)<br/>#end
+                $item.investorName $!number.format('#0.#', $item.ratio)%
+            #end
+        </td>
+    </tr>
+</table>
