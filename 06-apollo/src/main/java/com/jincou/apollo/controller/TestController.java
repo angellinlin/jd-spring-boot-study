@@ -15,19 +15,19 @@ public class TestController {
 
 
 
-    @Value( "${date.value}" )
-    String dateValue;
+//    @Value( "${date.value}" )
+//    String dateValue;
 
-    @GetMapping("test")
-    public String test() {
-        return "打印配置中心的 dateValue 值: "+ dateValue;
-    }
-
-
-    @GetMapping("test1")
-    public void test1() {
-        log.info("当前配置中心的 dateValue 值 = {}",dateValue);
-    }
+//    @GetMapping("test")
+//    public String test() {
+//        return "打印配置中心的 dateValue 值: "+ dateValue;
+//    }
+//
+//
+//    @GetMapping("test1")
+//    public void test1() {
+//        log.info("当前配置中心的 dateValue 值 = {}",dateValue);
+//    }
 
     @GetMapping("test2")
     public void test2() {
