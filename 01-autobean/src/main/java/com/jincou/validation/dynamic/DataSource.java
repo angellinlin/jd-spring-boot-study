@@ -8,7 +8,7 @@ import java.lang.annotation.*;
  * @date 2024/12/25 15:48
  */
 @Documented
-@Target({ElementType.METHOD})
+@Target({ElementType.TYPE,ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DataSource {
     String value() default DataSourceNames.FIRST;
