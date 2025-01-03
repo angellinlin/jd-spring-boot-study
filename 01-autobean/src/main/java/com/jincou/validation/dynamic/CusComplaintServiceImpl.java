@@ -23,6 +23,7 @@ public class CusComplaintServiceImpl {
     }
 
 
+    @DataSource(DataSourceNames.SECOND)
     public String selectByPrimaryKey1(Long id) {
         return jt2TaskMapper.selectByPrimaryKey1(id);
     }

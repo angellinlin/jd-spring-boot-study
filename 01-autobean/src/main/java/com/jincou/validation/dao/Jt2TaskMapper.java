@@ -12,7 +12,7 @@ import javax.naming.Name;
  * @author zhouguilong6
  */
 
-@DataSource(DataSourceNames.SECOND)
+
 public interface Jt2TaskMapper {
     /**
      * 根据主键查询客户事件信息。
@@ -20,6 +20,6 @@ public interface Jt2TaskMapper {
      * @return 对应主键的客户事件信息对象。
      */
 
-    @Select("select assignee_names from jt2_task where id = 5")
+
     String selectByPrimaryKey1(Long id);
 }

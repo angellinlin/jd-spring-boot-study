@@ -22,10 +22,10 @@
     <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
   </resultMap>
 
-<!--<select id="selectByPrimaryKey1" parameterType="java.lang.Long" resultMap="BaseResultMap">-->
-<!--  select assignee_names-->
-<!--  from jt2_task-->
-<!--  where id = #{id,jdbcType=BIGINT}-->
-<!--</select>-->
+<select id="selectByPrimaryKey1" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  select assignee_names
+  from jt2_task
+  where id = #{id,jdbcType=BIGINT}
+</select>
 
 </mapper>

@@ -19,6 +19,7 @@ public class TestController {
     // 先查询事件表
     @GetMapping(path = "/third-bean1")
     public InvCusEventInfo show() {
+        cusComplaintService.selectByPrimaryKey1(5L);
         return cusComplaintService.selectByPrimaryKey(10102L);
     }
 
