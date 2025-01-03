@@ -1,4 +1,4 @@
-package com.jincou.apollo.jdbcUtils;
+package com.jincou.apollo.juejin.jdbcUtils;
 
 /**
  * @author zhouguilong6
