@@ -115,11 +115,6 @@
             <version>1.1.9</version>
         </dependency>
         <dependency>
-            <artifactId>commons-io</artifactId>
-            <groupId>commons-io</groupId>ring
-            <version>2.4</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
             <version>1.7</version>
@@ -177,10 +172,31 @@
                 </exclusion>
             </exclusions>
         </dependency>
-            <dependency>
-                <groupId>com.jincou</groupId>
-                <artifactId>02-thirdbean</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.4.2</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.21</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.itfsw</groupId>
+                        <artifactId>mybatis-generator-plugin</artifactId>
+                        <version>1.4.6</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 </project>
