@@ -16,3 +16,6 @@ logging:
     com: info
 
 
+spring:
+  application:
+    name: spring-boot-test-apollo
