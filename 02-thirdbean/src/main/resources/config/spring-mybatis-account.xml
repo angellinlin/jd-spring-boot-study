@@ -1,0 +1,78 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+       default-lazy-init="true">
+
+    <context:annotation-config/>
+    <!-- 注解事务 -->
+    <tx:annotation-driven transaction-manager="txAccount" proxy-target-class="true"/>
+
+    <!--事务模板 -->
+    <bean id="transactionTemplateAccount" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="txAccount"/>
+        <!--ISOLATION_DEFAULT 表示由使用的数据库决定 -->
+        <property name="isolationLevelName" value="ISOLATION_DEFAULT"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
+        <!-- <property name="timeout" value="30"/> -->
+    </bean>
+
+    <bean id="txAccount" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceAccount"/>
+    </bean>
+
+
+    <!--morse-loan-account数据源-->
+    <bean id="dataSourceAccount" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.jdjr.cds.driver.CdsDriver"/>
+        <property name="url" value="jdbc:cds://stardb-server-guan-dev.jdd-office-dev.local:8088/morse_dev_acc_cds_01?app=morse_dev_acc_cds_01_pu;key=b22bf1cee4cc3be05598aa136afd260f8364ed53bd234bf0"/>
+        <property name="connectionProperties">
+            <!-- wangyincp配置 -->
+            <props>
+                <!--  扫描全部分表  -->
+                <prop key="wycds.route2all">true</prop>
+                <prop key="wycds.emit.algorthm_morse_tenant">
+                    com.jdd.fintech.megrez.loan.framework.cds.MorseTenantSplitAlgorithmByRange
+                </prop>
+                <prop key="dbpool.class">com.wangyin.commons.cp.WangyinCPDataSource</prop>
+                <prop key="dbpool.minConnections">0</prop>
+                <prop key="dbpool.maxConnections">5</prop>
+                <prop key="dbpool.checkoutTimeoutMilliSec">10000</prop>
+                <prop key="dbpool.idleTimeoutSec">300</prop>
+                <prop key="dbpool.verbose">true</prop>
+                <prop key="dbpool.printSQL">true</prop>
+                <prop key="dbpool.queryTimeout">300</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="sqlSessionFactoryAccount" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceAccount"/>
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+    </bean>
+
+<!--    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+<!--        <property name="dataSource" ref="dataSourceAccount"/>-->
+<!--        <property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
+<!--        <property name="typeAliasesPackage" value="com.jincou.validation.entity"/>-->
+<!--    </bean>-->
+
+    <bean name="accountBaseMapper" class="com.jdd.fintech.morse.base.dao.sqlhelper.MorseMapperScannerConfigurer">
+        <property name="basePackage" value="com.jincou.validation.dao,
+                                             mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryAccount"/>
+        <property name="properties">
+            <value>
+                mappers=com.jdd.fintech.morse.base.dao.PrimaryMapper
+                enumAsSimpleType=true
+                IDENTITY=MYSQL
+                safeDelete=true
+                safeUpdate=true
+            </value>
+        </property>
+    </bean>
+
+</beans>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <!-- 开启分页插件 -->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 数据Model属性对应Column获取插件 -->
+<!--        <plugin type="com.itfsw.mybatis.generator.plugins.ModelColumnPlugin"/>-->
+        <!-- 批量插入插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.BatchInsertPlugin">
+            <!--
+            开启后可以实现官方插件根据属性是否为空决定是否插入该字段功能
+            ！需开启allowMultiQueries=true多条sql提交操作，所以不建议使用！插件默认不开启
+            -->
+            <property name="allowMultiQueries" value="true"/>
+        </plugin>
+
+        <!-- 查询单条数据插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.SelectOneByExamplePlugin"/>
+
+        <!-- Lombok插件 -->
+<!--        <plugin type="com.itfsw.mybatis.generator.plugins.LombokPlugin">-->
+<!--            &lt;!&ndash; @Data 默认开启,同时插件会对子类自动附加@EqualsAndHashCode(callSuper = true)，@ToString(callSuper = true) &ndash;&gt;-->
+<!--            <property name="@Data" value="true"/>-->
+<!--            &lt;!&ndash; @Builder 必须在 Lombok 版本 >= 1.18.2 的情况下开启，对存在继承关系的类自动替换成@SuperBuilder &ndash;&gt;-->
+<!--            <property name="@Builder" value="true"/>-->
+<!--            &lt;!&ndash; @NoArgsConstructor 和 @AllArgsConstructor 使用规则和Lombok一致 &ndash;&gt;-->
+<!--            <property name="@AllArgsConstructor" value="true"/>-->
+<!--            <property name="@NoArgsConstructor" value="true"/>-->
+<!--            &lt;!&ndash; @Getter、@Setter、@Accessors 等使用规则参见官方文档 &ndash;&gt;-->
+<!--            <property name="@Accessors(chain = true)" value="false"/>-->
+<!--            &lt;!&ndash; 临时解决IDEA工具对@SuperBuilder的不支持问题，开启后(默认未开启)插件在遇到@SuperBuilder注解时会调用ModelBuilderPlugin来生成相应的builder代码 &ndash;&gt;-->
+<!--            <property name="supportSuperBuilderForIdea" value="false"/>-->
+<!--        </plugin>-->
+
+        <!-- 去掉注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://11.183.29.100:3306/morse_dev_acc_mysql?nullCatalogMeansCurrent=true"
+                        userId="morse_dev_acc_mysql_push"
+                        password="ipI9lF]TL">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetProject="src/main/java"
+                            targetPackage="com.jincou.validation.entity">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetProject="src/main/resources"
+                         targetPackage="mapper">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetProject="src/main/java"
+                             targetPackage="com.jincou.validation.dao" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+<!--        <table tableName="dt_case" domainObjectName="CaseDO" enableDeleteByPrimaryKey="false"-->
+<!--               enableDeleteByExample="false">-->
+<!--            <columnOverride column="deleted" javaType="Boolean"/>-->
+<!--        </table>-->
+<!--        <table tableName="dt_execute_record" domainObjectName="ExecuteRecordDO" enableDeleteByPrimaryKey="false"-->
+<!--               enableDeleteByExample="false">-->
+<!--            <columnOverride column="deleted" javaType="Boolean"/>-->
+<!--            <columnOverride column="input_param" jdbcType="VARCHAR"/>-->
+<!--            <columnOverride column="output_param" jdbcType="VARCHAR"/>-->
+<!--        </table>-->
+<!--        <table tableName="dt_plan" domainObjectName="PlanDO" enableDeleteByPrimaryKey="false"-->
+<!--               enableDeleteByExample="false">-->
+<!--            <columnOverride column="deleted" javaType="Boolean"/>-->
+<!--        </table>-->
+<!--        <table tableName="dt_interface" domainObjectName="InterfaceDO" enableDeleteByPrimaryKey="false"-->
+<!--               enableDeleteByExample="false">-->
+<!--            <columnOverride column="deleted" javaType="Boolean"/>-->
+<!--            <columnOverride column="input_param" jdbcType="VARCHAR"/>-->
+<!--            <columnOverride column="config" jdbcType="VARCHAR"/>-->
+<!--        </table>-->
+<!--        <table tableName="dt_interface_mock" domainObjectName="InterfaceMockDO" enableDeleteByPrimaryKey="false"-->
+<!--               enableDeleteByExample="false">-->
+<!--            <columnOverride column="deleted" javaType="Boolean"/>-->
+<!--            <columnOverride column="mock_value" jdbcType="VARCHAR"/>-->
+<!--        </table>-->
+<!--        <table tableName="dt_plan_case_scene" domainObjectName="PlanCaseSceneDO" enableDeleteByPrimaryKey="false"-->
+<!--               enableDeleteByExample="false">-->
+<!--            <columnOverride column="deleted" javaType="Boolean"/>-->
+<!--        </table>-->
+<!--        <table tableName="dt_case_scene" domainObjectName="CaseSceneDO" enableDeleteByPrimaryKey="false"-->
+<!--               enableDeleteByExample="false">-->
+<!--            <columnOverride column="deleted" javaType="Boolean"/>-->
+<!--        </table>-->
+<!--        <table tableName="dt_plan_case" domainObjectName="PlanCaseDO" enableDeleteByPrimaryKey="false"-->
+<!--               enableDeleteByExample="false">-->
+<!--            <columnOverride column="deleted" javaType="Boolean"/>-->
+<!--            <columnOverride column="context" jdbcType="VARCHAR"/>-->
+<!--        </table>-->
+        <table tableName="crl_debtbt_archive_info" domainObjectName="CrlDebtDtArchiveInfoDO" enableDeleteByPrimaryKey="false"
+               enableDeleteByExample="false">
+        </table>
+    </context>
+</generatorConfiguration>

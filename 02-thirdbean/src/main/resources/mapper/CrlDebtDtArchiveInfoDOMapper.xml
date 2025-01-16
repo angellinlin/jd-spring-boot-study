@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jincou.validation.dao.CrlDebtDtArchiveInfoDOMapper">
+  <resultMap id="BaseResultMap" type="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="file_type" jdbcType="VARCHAR" property="fileType" />
+    <result column="archive_url" jdbcType="VARCHAR" property="archiveUrl" />
+    <result column="archive_file_name" jdbcType="VARCHAR" property="archiveFileName" />
+    <result column="scene" jdbcType="VARCHAR" property="scene" />
+    <result column="business_no" jdbcType="VARCHAR" property="businessNo" />
+    <result column="outside_business_no" jdbcType="VARCHAR" property="outsideBusinessNo" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="modified_date" jdbcType="TIMESTAMP" property="modifiedDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, tenant_id, company_id, product_code, customer_code, user_id, file_type, archive_url, 
+    archive_file_name, scene, business_no, outside_business_no, created_date, modified_date
+  </sql>
+  <select id="selectByExample" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from crl_debtbt_archive_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crl_debtbt_archive_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <insert id="insert" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+    insert into crl_debtbt_archive_info (id, tenant_id, company_id, 
+      product_code, customer_code, user_id, 
+      file_type, archive_url, archive_file_name, 
+      scene, business_no, outside_business_no, 
+      created_date, modified_date)
+    values (#{id,jdbcType=BIGINT}, #{tenantId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{productCode,jdbcType=VARCHAR}, #{customerCode,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{fileType,jdbcType=VARCHAR}, #{archiveUrl,jdbcType=VARCHAR}, #{archiveFileName,jdbcType=VARCHAR}, 
+      #{scene,jdbcType=VARCHAR}, #{businessNo,jdbcType=VARCHAR}, #{outsideBusinessNo,jdbcType=VARCHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+    insert into crl_debtbt_archive_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="productCode != null">
+        product_code,
+      </if>
+      <if test="customerCode != null">
+        customer_code,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+      <if test="archiveUrl != null">
+        archive_url,
+      </if>
+      <if test="archiveFileName != null">
+        archive_file_name,
+      </if>
+      <if test="scene != null">
+        scene,
+      </if>
+      <if test="businessNo != null">
+        business_no,
+      </if>
+      <if test="outsideBusinessNo != null">
+        outside_business_no,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="modifiedDate != null">
+        modified_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveUrl != null">
+        #{archiveUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveFileName != null">
+        #{archiveFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="scene != null">
+        #{scene,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outsideBusinessNo != null">
+        #{outsideBusinessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDate != null">
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDOExample" resultType="java.lang.Long">
+    select count(*) from crl_debtbt_archive_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update crl_debtbt_archive_info
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.tenantId != null">
+        tenant_id = #{row.tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.companyId != null">
+        company_id = #{row.companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.productCode != null">
+        product_code = #{row.productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.customerCode != null">
+        customer_code = #{row.customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.userId != null">
+        user_id = #{row.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fileType != null">
+        file_type = #{row.fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="row.archiveUrl != null">
+        archive_url = #{row.archiveUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="row.archiveFileName != null">
+        archive_file_name = #{row.archiveFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.scene != null">
+        scene = #{row.scene,jdbcType=VARCHAR},
+      </if>
+      <if test="row.businessNo != null">
+        business_no = #{row.businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.outsideBusinessNo != null">
+        outside_business_no = #{row.outsideBusinessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.createdDate != null">
+        created_date = #{row.createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.modifiedDate != null">
+        modified_date = #{row.modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update crl_debtbt_archive_info
+    set id = #{row.id,jdbcType=BIGINT},
+      tenant_id = #{row.tenantId,jdbcType=VARCHAR},
+      company_id = #{row.companyId,jdbcType=VARCHAR},
+      product_code = #{row.productCode,jdbcType=VARCHAR},
+      customer_code = #{row.customerCode,jdbcType=VARCHAR},
+      user_id = #{row.userId,jdbcType=VARCHAR},
+      file_type = #{row.fileType,jdbcType=VARCHAR},
+      archive_url = #{row.archiveUrl,jdbcType=VARCHAR},
+      archive_file_name = #{row.archiveFileName,jdbcType=VARCHAR},
+      scene = #{row.scene,jdbcType=VARCHAR},
+      business_no = #{row.businessNo,jdbcType=VARCHAR},
+      outside_business_no = #{row.outsideBusinessNo,jdbcType=VARCHAR},
+      created_date = #{row.createdDate,jdbcType=TIMESTAMP},
+      modified_date = #{row.modifiedDate,jdbcType=TIMESTAMP}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+    update crl_debtbt_archive_info
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        product_code = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        customer_code = #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveUrl != null">
+        archive_url = #{archiveUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="archiveFileName != null">
+        archive_file_name = #{archiveFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="scene != null">
+        scene = #{scene,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null">
+        business_no = #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outsideBusinessNo != null">
+        outside_business_no = #{outsideBusinessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDate != null">
+        modified_date = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+    update crl_debtbt_archive_info
+    set tenant_id = #{tenantId,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      product_code = #{productCode,jdbcType=VARCHAR},
+      customer_code = #{customerCode,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      file_type = #{fileType,jdbcType=VARCHAR},
+      archive_url = #{archiveUrl,jdbcType=VARCHAR},
+      archive_file_name = #{archiveFileName,jdbcType=VARCHAR},
+      scene = #{scene,jdbcType=VARCHAR},
+      business_no = #{businessNo,jdbcType=VARCHAR},
+      outside_business_no = #{outsideBusinessNo,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      modified_date = #{modifiedDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from crl_debtbt_archive_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectOneByExample" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDOExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from crl_debtbt_archive_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>

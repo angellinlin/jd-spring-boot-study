@@ -1,0 +1,30 @@
+#spring:
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    datasource1:
+#      url: jdbc:mysql://11.183.30.49:3306/ledger_fufu?zeroDateTimeBehavior=convertToNull&characterEncoding=utf8&useUnicode=true&autoReconnect=true&failOverReadOnly=false&connectTimeout=2000&socketTimeout=30000&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+#      username: ledger_fufu_push
+#      password: c7Gy9>9EI
+#      initial-size: 1
+#      min-idle: 1
+#      max-active: 20
+#      test-on-borrow: true
+#    datasource2:
+#      url: jdbc:mysql://11.183.28.39:3306/cf_workflow?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&nullCatalogMeansCurrent=true&autoReconnect=true&failOverReadOnly=false&useSSL=false&allowPublicKeyRetrieval=true
+#      username: cf_workflow_push
+#      password: kK5*ND3qN
+#      initial-size: 1
+#      min-idle: 1
+#      max-active: 20
+#      test-on-borrow: true
+server:
+  port: 8081
+
+# application.yml
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.jincou.validation.entity  # 注意：对应实体类的路径
+
