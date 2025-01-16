@@ -27,4 +27,9 @@ public class TestMorseController {
     public int insertSelective(@RequestBody CrlDebtbtArchiveInfo crlDebtbtArchiveInfo) {
         return cusComplaintService.insertSelective(crlDebtbtArchiveInfo);
     }
+    @PostMapping(path = "/selectByPrimaryKey")
+    public CrlDebtDtArchiveInfoDO selectByPrimaryKey() {
+        return cusComplaintService.selectByPrimaryKey(1L);
+    }
+
 }

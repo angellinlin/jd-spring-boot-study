@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jincou.validation.dao.CrlDebtDtArchiveInfoDOMapper">
-  <resultMap id="BaseResultMap" type="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+<mapper namespace="com.jincou.third.dao.CrlDebtDtArchiveInfoDOMapper">
+  <resultMap id="BaseResultMap" type="com.jincou.third.entity.CrlDebtDtArchiveInfoDO">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
     <result column="company_id" jdbcType="VARCHAR" property="companyId" />
@@ -79,7 +79,7 @@
     id, tenant_id, company_id, product_code, customer_code, user_id, file_type, archive_url, 
     archive_file_name, scene, business_no, outside_business_no, created_date, modified_date
   </sql>
-  <select id="selectByExample" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDOExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.jincou.third.entity.CrlDebtDtArchiveInfoDOExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -99,7 +99,7 @@
     from crl_debtbt_archive_info
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <insert id="insert" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+  <insert id="insert" parameterType="com.jincou.third.entity.CrlDebtDtArchiveInfoDO">
     insert into crl_debtbt_archive_info (id, tenant_id, company_id, 
       product_code, customer_code, user_id, 
       file_type, archive_url, archive_file_name, 
@@ -111,7 +111,7 @@
       #{scene,jdbcType=VARCHAR}, #{businessNo,jdbcType=VARCHAR}, #{outsideBusinessNo,jdbcType=VARCHAR}, 
       #{createdDate,jdbcType=TIMESTAMP}, #{modifiedDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+  <insert id="insertSelective" parameterType="com.jincou.third.entity.CrlDebtDtArchiveInfoDO">
     insert into crl_debtbt_archive_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -202,7 +202,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDOExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.jincou.third.entity.CrlDebtDtArchiveInfoDOExample" resultType="java.lang.Long">
     select count(*) from crl_debtbt_archive_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -278,7 +278,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jincou.third.entity.CrlDebtDtArchiveInfoDO">
     update crl_debtbt_archive_info
     <set>
       <if test="tenantId != null">
@@ -323,7 +323,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDO">
+  <update id="updateByPrimaryKey" parameterType="com.jincou.third.entity.CrlDebtDtArchiveInfoDO">
     update crl_debtbt_archive_info
     set tenant_id = #{tenantId,jdbcType=VARCHAR},
       company_id = #{companyId,jdbcType=VARCHAR},
@@ -340,7 +340,7 @@
       modified_date = #{modifiedDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDOExample" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="com.jincou.third.entity.CrlDebtDtArchiveInfoDOExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -354,7 +354,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectOneByExample" parameterType="com.jincou.validation.entity.CrlDebtDtArchiveInfoDOExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="com.jincou.third.entity.CrlDebtDtArchiveInfoDOExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from crl_debtbt_archive_info

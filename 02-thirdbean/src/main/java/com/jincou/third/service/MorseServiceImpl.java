@@ -1,6 +1,7 @@
 package com.jincou.third.service;
 
 import com.jdd.fintech.morse.base.entity.split.bt.archives.CrlDebtbtArchiveInfo;
+import com.jincou.third.dao.CrlDebtDtArchiveInfoDOMapper;
 import com.jincou.third.dao.CrlDebtbtArchiveInfoMapper;
 
 import com.jincou.third.entity.CrlDebtDtArchiveInfoDO;
@@ -18,6 +19,8 @@ import java.util.List;
 public class MorseServiceImpl {
     @Autowired
     private CrlDebtbtArchiveInfoMapper crlDebtbtArchiveInfoMapper;
+    @Autowired
+    private CrlDebtDtArchiveInfoDOMapper crlDebtDtArchiveInfoDOMapper;
 
     @Transactional
     public List<CrlDebtDtArchiveInfoDO> selectByBusiNoAndCustmerCode(String id) {
@@ -27,5 +30,10 @@ public class MorseServiceImpl {
     @Transactional
     public int insertSelective(CrlDebtbtArchiveInfo crlDebtbtArchiveInfo) {
         return crlDebtbtArchiveInfoMapper.insertSelective(crlDebtbtArchiveInfo);
+    }
+
+    @Transactional
+    public CrlDebtDtArchiveInfoDO selectByPrimaryKey(Long id) {
+        return crlDebtDtArchiveInfoDOMapper.selectByPrimaryKey(id);
     }
 }
