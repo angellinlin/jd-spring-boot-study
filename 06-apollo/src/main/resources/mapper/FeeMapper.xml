@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jincou.apollo.juejin.juejin9.FeeMapper">
+  <insert id="insertByOne">
+    INSERT INTO fee(`owner`,`fee1`,`fee2`,`fee3`,`fee4`,`fee5`)
+    VALUES (#{owner}, #{fee1}, #{fee2}, #{fee3}, #{fee4}, #{fee5})
+  </insert>
+
+  <insert id="insertByForeach">
+    INSERT INTO fee(`owner`,`fee1`,`fee2`,`fee3`,`fee4`,`fee5`)
+    VALUES
+    <foreach collection="feeList" item="fee" separator=",">
+      (#{fee.owner}, #{fee.fee1}, #{fee.fee2}, #{fee.fee3}, #{fee.fee4}, #{fee.fee5})
+    </foreach>
+  </insert>
+</mapper>

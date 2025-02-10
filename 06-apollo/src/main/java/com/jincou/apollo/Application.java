@@ -4,6 +4,7 @@ package com.jincou.apollo;
 import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @Description: Springboot 启动类
@@ -13,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @EnableApolloConfig
+@ComponentScan(basePackages = {"com.jincou.apollo.juejin"})
 public class Application {
 
     public static void main(String[] args) {
