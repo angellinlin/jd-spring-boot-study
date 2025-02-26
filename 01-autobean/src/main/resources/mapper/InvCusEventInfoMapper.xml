@@ -30,4 +30,126 @@
   where id = #{id,jdbcType=BIGINT}
 </select>
 
+  <insert id="insertSelective" parameterType="com.jincou.validation.dynamic.InvCusEventInfo">
+    insert into inv_cus_event_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pin != null">
+        pin,
+      </if>
+      <if test="loanNo != null">
+        loan_no,
+      </if>
+      <if test="eventCategory != null">
+        event_category,
+      </if>
+      <if test="productType != null">
+        product_type,
+      </if>
+      <if test="complaintType != null">
+        complaint_type,
+      </if>
+      <if test="complaintSource != null">
+        complaint_source,
+      </if>
+      <if test="createdUser != null">
+        created_user,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="eventId != null">
+        event_id,
+      </if>
+      <if test="eventStatus != null">
+        event_status,
+      </if>
+      <if test="idNo != null">
+        id_no,
+      </if>
+      <if test="phoneNum != null">
+        phone_num,
+      </if>
+      <if test="currOperator != null">
+        curr_operator,
+      </if>
+      <if test="complaintInfo != null">
+        complaint_info,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+      <if test="attachment != null">
+        attachment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pin != null">
+        #{pin,jdbcType=VARCHAR},
+      </if>
+      <if test="loanNo != null">
+        #{loanNo,jdbcType=VARCHAR},
+      </if>
+      <if test="eventCategory != null">
+        #{eventCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null">
+        #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintType != null">
+        #{complaintType,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintSource != null">
+        #{complaintSource,jdbcType=VARCHAR},
+      </if>
+      <if test="createdUser != null">
+        #{createdUser,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="eventId != null">
+        #{eventId,jdbcType=VARCHAR},
+      </if>
+      <if test="eventStatus != null">
+        #{eventStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="idNo != null">
+        #{idNo,jdbcType=VARCHAR,typeHandler=com.jd.jr.cf.ledger.investor.handler.CryptoHandler},
+      </if>
+      <if test="phoneNum != null">
+        #{phoneNum,jdbcType=VARCHAR,typeHandler=com.jd.jr.cf.ledger.investor.handler.CryptoHandler},
+      </if>
+      <if test="currOperator != null">
+        #{currOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="complaintInfo != null">
+        #{complaintInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attachment != null">
+        #{attachment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
 </mapper>

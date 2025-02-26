@@ -27,8 +27,9 @@ public class DataSourceAspect implements Ordered {
     /**
      * 切点: 所有配置 DataSource 注解的方法
      */
-    @Pointcut("@annotation(com.jincou.validation.dynamic.DataSource)")
-    public void dataSourcePointCut() {}
+    @Pointcut("@annotation(com.jincou.validation.dynamic.DataSource)||@within(com.jincou.validation.dynamic.DataSource)")
+    public void dataSourcePointCut() {
+    }
 
     @Around("dataSourcePointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {

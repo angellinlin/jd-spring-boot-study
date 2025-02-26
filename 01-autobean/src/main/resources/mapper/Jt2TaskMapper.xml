@@ -21,8 +21,69 @@
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
   </resultMap>
+  <insert id="insertSelective">
+    insert into jt2_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="yn != null">
+        yn,
+      </if>
+      <if test="rev != null">
+        rev,
+      </if>
+      <if test="taskName != null">
+        task_name,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="instId != null">
+        inst_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="yn != null">
+        #{yn,jdbcType=BIGINT},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=BIGINT},
+      </if>
+      <if test="taskName != null">
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="instId != null">
+        #{instId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
 
-<select id="selectByPrimaryKey1" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey1" parameterType="java.lang.Long" resultMap="BaseResultMap">
   select assignee_names
   from jt2_task
   where id = #{id,jdbcType=BIGINT}

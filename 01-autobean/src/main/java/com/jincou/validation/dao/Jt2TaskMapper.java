@@ -3,6 +3,7 @@ package com.jincou.validation.dao;
 import com.jincou.validation.dynamic.DataSource;
 import com.jincou.validation.dynamic.DataSourceNames;
 import com.jincou.validation.dynamic.InvCusEventInfo;
+import com.jincou.validation.entity.TaskBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -22,4 +23,6 @@ public interface Jt2TaskMapper {
 
 
     String selectByPrimaryKey1(Long id);
+
+    int insertSelective(TaskBean taskBean);
 }

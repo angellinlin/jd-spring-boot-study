@@ -15,4 +15,6 @@ public interface InvCusEventInfoMapper {
      * @return 对应主键的客户事件信息对象。
      */
     InvCusEventInfo selectByPrimaryKey(Long id);
+
+    int insertSelective(InvCusEventInfo record);
 }
