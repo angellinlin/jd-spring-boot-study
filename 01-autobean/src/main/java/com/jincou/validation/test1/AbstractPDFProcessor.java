@@ -1,5 +1,7 @@
 package com.jincou.validation.test1;
 
+import com.jd.jr.baitiao.agreement.export.vo.DoFileSignatureReq;
+import com.jd.jr.baitiao.agreement.export.vo.DoFileSignatureRes;
 import com.jincou.validation.controller.FileToBytesUtil;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -40,7 +42,7 @@ public class AbstractPDFProcessor {
 //        return doFileSignatureRes.getContentBytes();
 //    }
 
-//    private DoFileSignatureReq builderDoFileSignatureReq(byte[] pdf,String pin){
+//    private DoFileSignatureReq builderDoFileSignatureReq(byte[] pdf, String pin){
 //        DoFileSignatureReq req = new DoFileSignatureReq();
 //        req.setAppId(pdfProcessorDepend.getAgreementSignatureAppId());
 //        req.setAppToken(pdfProcessorDepend.getAgreementSignatureAppToken());
