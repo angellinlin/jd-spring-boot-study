@@ -5,6 +5,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.jd.jr.cf.ledger.integration.export.dto.UserPhotoInfo;
 import com.jincou.validation.test1.AbstractPDFProcessor;
 import com.jincou.validation.test1.HomeBO;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,8 @@ public class TestController {
                 IOUtils.write(bo.getFrontPhoto(), out);
                 bo.setFrontPhotoPath(frontPhotoPath);
             }
+            int length = bo.getFrontPhoto().length;
+            System.out.println(length);
         }
         if (bo.getBackPhoto() != null && StringUtils.isNotEmpty(bo.getBackPhotoName())) {
             try (OutputStream out = new FileOutputStream(backPhotoPath)) {
