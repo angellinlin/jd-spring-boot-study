@@ -64,7 +64,7 @@ public class TestController {
         if (bo.getFrontPhoto() != null && StringUtils.isNotEmpty(bo.getFrontPhotoName())) {
             ByteArrayInputStream bisFrontPhoto = new ByteArrayInputStream(bo.getFrontPhoto());
             ByteArrayOutputStream bosFrontPhoto = new ByteArrayOutputStream();
-            ImageCompressorUtil.compressImage(bisFrontPhoto,bosFrontPhoto,900,650,0.7f, "jpg");
+            ImageCompressorUtil.compressImage(bisFrontPhoto,bosFrontPhoto,1000,650,1.0f, "jpg");
             byte[] compressedFrontPhotoBytes = bosFrontPhoto.toByteArray();
             bo.setFrontPhoto(compressedFrontPhotoBytes);
 
@@ -78,7 +78,7 @@ public class TestController {
         if (bo.getBackPhoto() != null && StringUtils.isNotEmpty(bo.getBackPhotoName())) {
             ByteArrayInputStream bisBackPhoto = new ByteArrayInputStream(bo.getBackPhoto());
             ByteArrayOutputStream bosBackPhoto = new ByteArrayOutputStream();
-            ImageCompressorUtil.compressImage(bisBackPhoto,bosBackPhoto,900,650,0.7f, "jpg");
+            ImageCompressorUtil.compressImage(bisBackPhoto,bosBackPhoto,1000,650,1.0f, "jpg");
             byte[] compressedBackPhotoBytes = bosBackPhoto.toByteArray();
             bo.setBackPhoto(compressedBackPhotoBytes);
 
