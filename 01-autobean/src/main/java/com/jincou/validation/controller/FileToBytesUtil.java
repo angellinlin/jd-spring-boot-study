@@ -50,6 +50,7 @@ public class FileToBytesUtil{
         try (FileOutputStream fos = new FileOutputStream(file);
              BufferedOutputStream bos = new BufferedOutputStream(fos)) {
             bos.write(bytes);
+            bos.flush(); // 强制刷新缓冲区
         } catch (Exception e) {
             e.printStackTrace();
         }

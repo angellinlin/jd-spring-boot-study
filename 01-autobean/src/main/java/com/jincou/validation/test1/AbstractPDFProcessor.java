@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
@@ -56,7 +58,7 @@ public class AbstractPDFProcessor {
 //        return req;
 //    }
 
-    public void genPDFAndSign(AbstractBO bo, String viewName, String fileName, String pin) throws Exception {
+    public void genPDFAndSign(HomeBO bo, String viewName, String fileName, String pin) throws Exception {
         byte[] pdf = genPDF(bo, viewName);
 //        savePDF(pdf,"核销文件排查");
         FileToBytesUtil.fileToBytes(pdf,null,null);
@@ -73,7 +75,7 @@ public class AbstractPDFProcessor {
     /**
      * 生成PDF
      */
-    private byte[] genPDF(AbstractBO model, String view) throws Exception {
+    private byte[] genPDF(HomeBO model, String view) throws Exception {
         Velocity.init();
         Context ctx = new VelocityContext();
         ctx.put("model", model);
@@ -85,6 +87,7 @@ public class AbstractPDFProcessor {
         }});
 
         StringWriter writer = new StringWriter();
+
         pdfProcessorDepend.getEngine().mergeTemplate(view, "utf-8", ctx, writer);
         ByteArrayInputStream inputStream = new ByteArrayInputStream(writer.toString().getBytes(StandardCharsets.UTF_8));
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
